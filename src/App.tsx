@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.scss';
 import HeaderComponent from './components/Header/HeaderComponent';
+import HomeComponent from './components//HomePageComponent/HomeComponent';
+import HomePageStyles from './components/HomePageComponent/HomePageStyle.module.scss';
 
 
 import {
@@ -14,10 +16,26 @@ function App() {
     <Router>
       <div className='body'>
         <HeaderComponent />
-        <Routes></Routes>
+
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="*" element={<NoMatch />} />
+        </Routes>
       </div>
     </Router>
   );
+}
+
+function NoMatch() {
+  return (
+    <a href="https://pets.byspotify.com/404">
+      <h1 className={HomePageStyles.nofound}>No match, unfortunately...</h1>
+    </a>
+  );
+}
+
+function HomePage() {
+  return <HomeComponent />
 }
 
 export default App;

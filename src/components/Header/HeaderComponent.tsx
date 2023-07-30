@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderStyles from './HeaderComponent.module.scss';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/flag.jpg';
 
 import {
     Link
