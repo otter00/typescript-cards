@@ -3,6 +3,7 @@ import './App.scss';
 import HeaderComponent from './components/Header/HeaderComponent';
 import HomeComponent from './components//HomePageComponent/HomeComponent';
 import HomePageStyles from './components/HomePageComponent/HomePageStyle.module.scss';
+import { ContextProvider } from './context/ContextProvider';
 
 
 import {
@@ -13,6 +14,7 @@ import {
 
 function App() {
   return (
+    <ContextProvider>
     <Router>
       <div className='body'>
         <HeaderComponent />
@@ -23,6 +25,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </ContextProvider>
   );
 }
 
