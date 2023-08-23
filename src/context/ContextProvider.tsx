@@ -1,15 +1,14 @@
-import { createContext, useState, useEffect } from "react";
-
+import React, { createContext, useState, useEffect } from "react";
 export interface ContextValues {
-    words: any[], // Change 'any' to a more specific type if possible
+    words: any[], 
 }
 
-const WordsContext = createContext<ContextValues | null>(null);
+export const WordsContext = createContext<ContextValues | null>(null);
 
-export const ContextProvider =  ({ children }: { children: React.ReactNode }) => {
-    const [words, setWords] = useState<any[]>([]); // Change 'any' to a more specific type if possible
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+const ContextProvider = ({ children }: { children: React.ReactNode }) => {
+    const [words, setWords] = React.useState<any[]>([]); 
+    const [isLoading, setIsLoading] = React.useState(false);
+    const [error, setError] = React.useState<string | null>(null);
   
     function loadData() {
       setIsLoading(true);
@@ -35,6 +34,7 @@ export const ContextProvider =  ({ children }: { children: React.ReactNode }) =>
     }, []);
   
     const values = { words };
+
     return (
       <WordsContext.Provider value={values}>
         {isLoading && <p>Loading...</p>}
@@ -43,6 +43,8 @@ export const ContextProvider =  ({ children }: { children: React.ReactNode }) =>
       </WordsContext.Provider>
     );
   };
+
+export default ContextProvider;
 
 // export const ContextProvider = ({ children } : ContextValues) => {
 //     const [words, setWords] = useState([]);
