@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { WordsContext } from '../../context/ContextProvider';
 import TemplateTableStyles from './TemplateTable.module.scss';
+import CustomButton from '../CustomButton/CustomButton';
+import ButtonStyles from '../CustomButton/CustomButtonStyles.module.scss'
 
 export interface TemplateTableProps {
     english: string,
@@ -191,7 +193,17 @@ console.log(word)
             type="text" />
             {/* <span className={TemplateTableStyles.center__flex}>{word.russian}</span> */}
             </td>
-            <td></td>
+            <td>
+              <div className={TemplateTableStyles.center__flex}>
+              <CustomButton
+              className={[ButtonStyles.generalButton, ButtonStyles.buttonEdit].join(' ')}
+              name={'Edit'}  />
+
+              <CustomButton
+              className={[ButtonStyles.generalButton, ButtonStyles.buttonDelete].join(' ')}
+              name={'Delete'}  />
+              </div>
+            </td>
         </tr>
         </>
     );
