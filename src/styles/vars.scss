@@ -4,6 +4,12 @@
   letter-spacing: 1.5px;
 }
 
+@mixin InputFont {
+  color: $button-color;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+
 @mixin ButtonFont__Disabled {
   color: black;
   font-weight: 700;
@@ -37,3 +43,4 @@
 }
 
 $main-color: #fff;
+$button-color: #000;
