@@ -5,6 +5,8 @@ import HomePageStyles from './components/HomePageComponent/HomePageStyle.module.
 import ContextProvider from './context/ContextProvider';
 import TemplateTableStyles from './components/TemplateTable/TemplateTable.module.scss';
 import TableWordsComponent from './components/TableWordsComponent/TableWordsComponent';
+import CardSlider from './components/CardSlider/CardSlider'
+import AddStringRow from './components/AddStringRow/AddStringRow'
 
 import {
   BrowserRouter as Router,
@@ -22,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/table" element={<TableWordsList />} />
+          {/* <Route path="/learn" element={<Learn />} /> */}
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </div>
@@ -38,6 +41,10 @@ function NoMatch() {
   );
 }
 
+// function Learn() {
+//   return <CardSlider />;
+// }
+
 function HomePage() {
   return <HomeComponent />
 }
@@ -45,6 +52,7 @@ function HomePage() {
 function TableWordsList() {
   return (
     <>
+  <AddStringRow />
   <table className={TemplateTableStyles.table}>
   <thead className={TemplateTableStyles.thead}>
     <tr>
