@@ -7,6 +7,7 @@ export type TodoContextType = {
   words: any[], 
   deleteWord: (id: string, newWord: any) => void,
   editWord: (id: string, newWord: any) => void,
+  addWord: (id: string, newWord: any) => void,
 };
 
 export const WordsContext = createContext<TodoContextType | null>(null);
@@ -34,6 +35,33 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
           setError(error.message);
         });
     }
+
+    function addWord(id: string, newWord: any) {
+      fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/add`, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newWord),
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Try again");
+          }
+        })
+        .then((data) => {
+          setIsLoading(false);
+          setWords((prevWords) => [...prevWords, data]);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          setError(error.message);
+        });
+      loadData();
+}
 
     function editWord(id: string, newWord: any) {
         fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/update`, {
@@ -97,7 +125,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
     }, []);
 
     return (
-      <WordsContext.Provider value={ { words, deleteWord, editWord } }>
+      <WordsContext.Provider value={ { words, deleteWord, editWord, addWord } }>
         {isLoading && <p>Loading...</p>}
         {error && <p>{`Ooops, error occurred: ${error}`}</p>}
         {children}

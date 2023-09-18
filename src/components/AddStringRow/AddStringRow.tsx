@@ -2,8 +2,7 @@ import React, { useState, useContext } from "react";
 import AddStringRow from "./AddStringRow.module.scss";
 import ButtonStyles from '../CustomButton/CustomButtonStyles.module.scss'
 import CustomButton from "../CustomButton/CustomButton";
-import { WordsContext } from "../../context/ContextProvider";
-
+import { WordsContext, TodoContextType } from "../../context/ContextProvider";
 
 interface AddStringProps {
       id: string;
@@ -15,28 +14,31 @@ export default function StringRow() {
   const [tr, setTranscription] = useState<string>("tr");
   const [ru, setRussian] = useState<string>("ru");
 
-  //let { id } = props;
-  //const { addWord } = useContext(WordsContext); //call for function from context
+  const { words, addWord } = useContext(WordsContext) as TodoContextType; 
 
-//   const handleButtonAddClick = () => {
-//     // Выводим введенные данные в консоль
-//     // console.log('Level:', lvl);
-//     // console.log('English:', en);
-//     // console.log('Transcription:', tr);
-//     // console.log('Russian:', ru);
+  {words.map((word) => (
+    console.log(word.id)
+  ))}
 
-//     //create an object contains input values
-//     //then call for func and send it an object to add new word into API
-//     const newWord = {
-//       tags: lvl,
-//       english: en,
-//       transcription: tr,
-//       russian: ru,
-//     };
+  const handleButtonAddClick = () => {
+    // Выводим введенные данные в консоль
+    // console.log('Level:', lvl);
+    // console.log('English:', en);
+    // console.log('Transcription:', tr);
+    // console.log('Russian:', ru);
 
-//     console.log(newWord);
-//     addWord(id, newWord);
-//   };
+    //create an object contains input values
+    //then call for func and send it an object to add new word into API
+    const newWord = {
+      tags: lvl,
+      english: en,
+      transcription: tr,
+      russian: ru,
+    };
+
+    console.log(newWord);
+    addWord(newWord);
+  };
 
   return (
     <div className={AddStringRow.container__div}>
@@ -96,7 +98,7 @@ export default function StringRow() {
                 <CustomButton
                   className={[ButtonStyles.generalButton, ButtonStyles.buttonAdd].join(' ')} 
                   name={"Add"}
-                  //onClick={handleButtonAddClick}
+                  onClick={handleButtonAddClick}
                 />
               </div>
             </td>

@@ -7,12 +7,15 @@ import TemplateTableStyles from './components/TemplateTable/TemplateTable.module
 import TableWordsComponent from './components/TableWordsComponent/TableWordsComponent';
 import CardSlider from './components/CardSlider/CardSlider'
 import AddStringRow from './components/AddStringRow/AddStringRow'
+import { WordsContext } from './context/ContextProvider';
+
 
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
+
 
 function App() {
   return (
@@ -50,6 +53,7 @@ function HomePage() {
 }
 
 function TableWordsList() {
+
   return (
     <>
   <AddStringRow />
