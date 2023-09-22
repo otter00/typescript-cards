@@ -8,7 +8,7 @@ interface AddStringProps {
       id: string;
 }
 
-export default function StringRow() {
+export default function StringRow({id} : AddStringProps) {
   const [lvl, setLevel] = useState<string>("lvl"); //initialize the state
   const [en, setEnglish] = useState<string>("en");
   const [tr, setTranscription] = useState<string>("tr");
@@ -37,7 +37,7 @@ export default function StringRow() {
     };
 
     console.log(newWord);
-    addWord(newWord);
+    addWord(id, newWord);
   };
 
   return (

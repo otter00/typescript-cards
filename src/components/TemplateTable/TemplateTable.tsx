@@ -45,10 +45,10 @@ export default function Template({english, russian, tags, transcription, id} : T
 
     useEffect(() => {
       const checkInput = () => {
-        if (word.english.trim() === '' || 
-        word.russian.trim() === '' || 
-        word.tags.trim() === '' || 
-        word.transcription.trim() === '') {
+        if (word.english === ' ' || 
+        word.russian === ' ' || 
+        word.tags === ' ' || 
+        word.transcription === ' ') {
           setIsEmpty(isEmpty === true);
         } else {
           setIsEmpty(isEmpty === true);
@@ -70,10 +70,10 @@ export default function Template({english, russian, tags, transcription, id} : T
 
     // function that saves entered word and checks whether field is empty
     const save = () => {
-      if (word.english.trim() === '' || 
-        word.russian.trim() === '' || 
-        word.tags.trim() === '' ||
-        word.transcription.trim() === '') {
+      if (word.english === '' || 
+        word.russian === '' || 
+        word.tags === '' ||
+        word.transcription === '') {
           setIsEmpty(true);
           alert(`Please fill all the inputs required`);
         return;
@@ -155,7 +155,7 @@ console.log(word)
                 onChange={onChangeLevel} 
                 value={word.tags}
                 className={
-                    word.tags.trim() === ""
+                    word.tags.trim() === " "
                       ? `${TemplateTableStyles.empty_input}`
                       : ""
                   }
@@ -168,7 +168,7 @@ console.log(word)
                 onChange={onChangeEnglish}
                   value={word.english}
                   className={
-                      word.english.trim() === ""
+                      word.english.trim() === " "
                         ? `${TemplateTableStyles.empty_input}`
                         : ""
                     }
@@ -181,7 +181,7 @@ console.log(word)
                 onChange={onChangeTranscription}
                 value={word.transcription}
                 className={
-                    word.transcription.trim() === ""
+                    word.transcription.trim() === " "
                       ? `${TemplateTableStyles.empty_input}`
                       : ""
                   }
@@ -194,7 +194,7 @@ console.log(word)
                 onChange={onChangeRussian} 
                 value={word.russian}
                 className={
-                    word.russian.trim() === ""
+                    word.russian.trim() === " "
                       ? `${TemplateTableStyles.empty_input}`
                       : ""
                   }

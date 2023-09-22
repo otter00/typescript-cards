@@ -5,7 +5,8 @@ import HomePageStyles from './components/HomePageComponent/HomePageStyle.module.
 import ContextProvider from './context/ContextProvider';
 import TemplateTableStyles from './components/TemplateTable/TemplateTable.module.scss';
 import TableWordsComponent from './components/TableWordsComponent/TableWordsComponent';
-import CardSlider from './components/CardSlider/CardSlider'
+//import CardSlider from './components/CardSlider/CardSlider'
+import CardComponent from './components/CardComponent/CardComponent'
 import AddStringRow from './components/AddStringRow/AddStringRow'
 import { WordsContext } from './context/ContextProvider';
 
@@ -27,7 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/table" element={<TableWordsList />} />
-          {/* <Route path="/learn" element={<Learn />} /> */}
+          <Route path="/learn" element={<Learn />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </div>
@@ -44,9 +45,10 @@ function NoMatch() {
   );
 }
 
-// function Learn() {
-//   return <CardSlider />;
-// }
+function Learn() {
+  //return <CardSlider />;
+  return <CardComponent></CardComponent>
+}
 
 function HomePage() {
   return <HomeComponent />
@@ -56,7 +58,7 @@ function TableWordsList() {
 
   return (
     <>
-  <AddStringRow />
+  <AddStringRow id={'test'} />
   <table className={TemplateTableStyles.table}>
   <thead className={TemplateTableStyles.thead}>
     <tr>
